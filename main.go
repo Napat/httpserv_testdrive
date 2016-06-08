@@ -9,13 +9,15 @@ type myHandler int
 
 func (h myHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "text/html; charset=utf-8")
+	io.WriteString(res, GetOutboundIP())
+
 	switch req.URL.Path {
 	case "/":
-		io.WriteString(res, "<strong>I am Root<strong>")
+		io.WriteString(res, "<p><strong>I AM gROOT<strong></p>")
 	case "/ant":
-		io.WriteString(res, "<strong>And An Ant<strong>")
+		io.WriteString(res, "<p><strong>And Ann Ant<strong></p>")
 	case "/bird":
-		io.WriteString(res, "<strong>Big Bird<strong>")
+		io.WriteString(res, "<p><strong>Black Bird<strong></p>")
 	}
 }
 
